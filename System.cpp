@@ -11,7 +11,7 @@
 #include "Time_period.h"
 #include "Destination.h"
 
-//Global variables
+
 const int MAX_CMD_LEN = 8;
 const int MAX_INPUT_LEN = 128;
 const int MAX_COMMENT_LEN = 1000;
@@ -25,32 +25,27 @@ System& System::i()
 	return instance;
 }
 
-//Destructor
 System::~System() 
 {
 	std::cout << "Have a nice day!";
 }
 
-//Singup function
 void System::singup(const char* username, const char* pass, const char* email)
 {
 	registrations.push_back({ username, pass, email });	
 }
 
-//Singin function
 void System::singin(const char* usermane, const char* pass, const char* email)
 {
 	registrations.push_back({ usermane, pass, email });
 }
 
-//Destination function
 void System::destination(const char* city, const char* country)
 {
 	destinations.push_back({ city, country });
 	std::cout<< "Destination: " << city << ", " << country << std::endl;
 }
 
-//Time function
 Time_period System::DateFrom(int day, int month, int year)
 {
 	time_period.push_back({ day, month, year });
@@ -58,7 +53,6 @@ Time_period System::DateFrom(int day, int month, int year)
 	return time_period.back();
 }
 
-//Time function
 Time_period System::DateTo(int day, int month, int year)
 {
 	time_period2.push_back({ day, month, year });
@@ -73,21 +67,18 @@ void System::grade(int m_grade)
 	std::cout << "Grade: " << m_grade << std::endl;	
 }
 
-//Comment function
 void System::add_comment(const char* comment)
 {
 	comments.push_back({ comment });
 	std::cout << "Comment: " << comment << std::endl;
 }
 
-//Photo function
 void System::add_photo(const char* photo)
 {
 	photos.push_back({ photo });
 	std::cout << "Photo: " << photo << std::endl;
 }
 
-//system run function
 void System::run()
 {
 	char username[MAX_INPUT_LEN];
@@ -237,7 +228,6 @@ void System::run()
 	while (strcmp(input, "exit") != 0);
 }
 
-//Serialize method
 bool System::serialize(const char* m_name) const
 {
 	std::ofstream out(m_name);
@@ -266,7 +256,6 @@ bool System::serialize(const char* m_name) const
 	return true;
 }
 
-//Deserialize method
 bool System::Read(const char* m_name)
 {
 	char c;
@@ -284,7 +273,6 @@ bool System::Read(const char* m_name)
 	return true;
 }
 
-//Help function
 void System::Help()
 {
 	std::cout << "singup <username> <password> - create account" << std::endl

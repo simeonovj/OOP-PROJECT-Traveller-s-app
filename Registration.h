@@ -1,27 +1,35 @@
 #pragma once
 #include <fstream>
 
-//Class for registrations
+/**
+	* class Registation
+	*/
 class Registation
 {
 public:
-	//Big four
-	Registation(const char* nickname, const char* pass, const char* email);//Construcor
-	Registation(const Registation& other);//Copy construcor
-	Registation& operator=(Registation& other);//Operator =
-	~Registation();//Destructor
+	/**
+	* Big four
+	*/
+	Registation(const char* nickname, const char* pass, const char* email);
+	Registation(const Registation& other);
+	Registation& operator=(Registation& other);
+	~Registation();
 
-	//Serialize and deserialize for files 
+	/**
+	* Serialize and deserialize for files
+	*/
 	void serialize(std::ofstream& out) const;
 	Registation(std::ifstream& in);
 
-	//Get methods
+	/**
+	* Get method
+	*/
 	inline const char* GetNickName() const { return nickname; }
 	inline const char* GetPass() const { return pass; }
 	inline const char* GetEmail()const { return email; }
 private:
-	void copy(const Registation& other);//Copy method
-	void clear();//Clear method
+	void copy(const Registation& other);
+	void clear();
 
 	char* nickname;
 	char* pass;

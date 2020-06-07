@@ -1,27 +1,35 @@
 #pragma once
 #include <fstream>
 
-//Class for destinations
+/**
+	* Class Destination
+	*/
 class Destination
 {
 public:
-	//Big four
-	Destination(const char* city, const char* country);//Constructor
-	Destination(const Destination& other);//Copy constructor
-	Destination& operator=(Destination& other);//Operator =
-	~Destination();//Destructor
+	/**
+	* Big four
+	*/
+	Destination(const char* city, const char* country);
+	Destination(const Destination& other);
+	Destination& operator=(Destination& other);
+	~Destination();
 
-	//Serialize and deserialize for files 
+	/**
+	* Serialize and deserialize for files
+	*/
 	void serialize(std::ofstream& out) const;
 	Destination(std::ifstream& in);
 
-	//Get methods
+	/**
+	* Get method
+	*/
 	inline const char* GetCity() const { return city; }
 	inline const char* GetCountry() const { return country; }
 
 private:
-	void copy(const Destination& other);//Copy method
-	void clear();//Clear method
+	void copy(const Destination& other);
+	void clear();
 
 	char* city;
 	char* country;

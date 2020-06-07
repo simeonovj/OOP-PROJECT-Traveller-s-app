@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-//Constructor
+
 Registation::Registation(const char* nickname, const char* pass, const char* email)
 	:nickname(new char[strlen(nickname) + 1])
 	, pass(new char[strlen(pass) + 1])
@@ -14,13 +14,11 @@ Registation::Registation(const char* nickname, const char* pass, const char* ema
 	strcpy(this->email, email);
 }
 
-//Copy constructor
 Registation::Registation(const Registation& other)
 {
 	copy(other);
 }
 
-//Operator =
 Registation& Registation::operator=(Registation& other)
 {
 	if (this != &other)
@@ -31,13 +29,11 @@ Registation& Registation::operator=(Registation& other)
 	return *this;
 }
 
-//Destrutor
 Registation::~Registation()
 {
 	clear();
 }
 
-//Serialize method
 void Registation::serialize(std::ofstream& out) const
 {	
 	out << nickname << " ";
@@ -45,7 +41,6 @@ void Registation::serialize(std::ofstream& out) const
 	out << email << std::endl;;	
 }
 
-//Deserialize method
 Registation::Registation(std::ifstream& in)
 {
 	in >> nickname;
@@ -53,7 +48,6 @@ Registation::Registation(std::ifstream& in)
 	in >> email;
 }
 
-//Copy method
 void Registation::copy(const Registation& other)
 {
 	nickname = new char[strlen(other.nickname) + 1];
@@ -64,7 +58,6 @@ void Registation::copy(const Registation& other)
 	strcpy(email, other.email);
 }
 
-//Clear method
 void Registation::clear()
 {
 	delete[] nickname;

@@ -1,26 +1,34 @@
 #include <fstream>
 #pragma once
 
-//Class for photos
+/**
+	* Class photos
+	*/
 class Photos
 {
 public:
-	//Big four
-	Photos(const char* photo_name);//Construcor
-	Photos(const Photos& other);//Copy constructor
-	Photos& operator=(Photos& other);//Operator =
-	~Photos();//Destrucot
+	/**
+	* Big four
+	*/
+	Photos(const char* photo_name);
+	Photos(const Photos& other);
+	Photos& operator=(Photos& other);
+	~Photos();
 
-	//Serialize and deserialize for files 
+	/**
+	* Serialize and deserialize for files
+	*/
 	void serialize(std::ofstream& out) const;
 	Photos(std::ifstream& in);
 
-	//Get method
+	/**
+	* Get method
+	*/
 	inline const char* GetPhotoName() const { return photo_name; }
 
 private:
-	void copy(const Photos& other);//Copy method
-	void clear();//Clear method
+	void copy(const Photos& other);
+	void clear();
 
 	char* photo_name;
 	
