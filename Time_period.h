@@ -2,16 +2,17 @@
 #include <ostream>
 #include <fstream>
 
+//Class Time
 class Time_period
 {
 public:
-	Time_period(int day, int month, int year);
+	Time_period(int day, int month, int year);//Cosntuctor
 
+	//Serialize and deserialize for files 
 	void serialize(std::ofstream& out) const;
 	Time_period(std::ifstream& in);
 
-	void print();
-
+	//Get methods
 	inline int getDay() const { return m_day; }
 	inline int getMonyh() const { return m_month; }
 	inline int getYear() const { return m_year; }

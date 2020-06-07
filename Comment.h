@@ -1,23 +1,26 @@
 #include <fstream>
 #pragma once
+
+//Class for comments
 class Comment
 {
 public:
-	Comment(const char* comment);
-	Comment(const Comment& other);
-	Comment& operator=(Comment& other);
-	~Comment();
+	//Big four
+	Comment(const char* comment); // Constructor
+	Comment(const Comment& other); //Copy constructor
+	Comment& operator=(Comment& other); //Operator =
+	~Comment(); //Destructor
 
+	//Serialize and deserialize for files 
 	void serialize(std::ofstream& out) const;
 	Comment(std::ifstream& in);
 
-	void print();
-
+	//Get mothod
 	inline const char* GetComment() const { return comment; }
 
 private:
-	void copy(const Comment& other);
-	void clear();
+	void copy(const Comment& other); //Copy method
+	void clear(); //Clear method
 
 	char* comment;
 };
